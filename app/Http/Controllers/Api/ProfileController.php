@@ -7,6 +7,7 @@ use App\Http\Resources\AllPostsCollection;
 use App\Http\Resources\UsersCollection;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -17,7 +18,6 @@ class ProfileController extends Controller
     public function show($id)
     {
         try {
-
             $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
             $user = User::where('id', $id)->get();
 
