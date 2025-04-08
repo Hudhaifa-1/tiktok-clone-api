@@ -31,7 +31,7 @@ class UserController extends Controller
     public function updateUserImage(Request $request)
     {
         $request->validate(['image' => 'required|mimes:png,jpg,jpeg']);
-        if ($request->height === '' || $request->width === '' || $request->top === '' || $request->left === '') {
+        if ($request->height === null || $request->width === null || $request->top === null || $request->left === null) {
             return response()->json(['error' => 'The dimentions are incomplete'], 400);
         }
 

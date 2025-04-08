@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Log;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -24,6 +25,13 @@ class FileService{
 
         $file = $request->file('image');
         $extention = $file->getClientOriginalExtension();
+
+        Log::info('Image object after reading:', [
+            'width' => json_encode($request->width),
+            'height' => json_encode($request->height),
+            'left' => json_encode($request->left),
+            'top' => json_encode($request->top)
+        ]);
 
         $image->crop(
             $request->width,
